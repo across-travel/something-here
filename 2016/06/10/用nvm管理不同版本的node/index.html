@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="null">
+  <meta name="keyword" content="undefined">
+  
+       <link rel="shortcut icon" href="/css/images/logo.jpg">
+  
+  <title>
+    
+      使用nvm管理不同版本的node与npm | kriry
+    
+  </title>
+  <div class="wechat-share">
+      <img src="/css/images/logo.png" width='700'/>
+  </div>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span><strong>kriry</strong></span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link"><strong>Home</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link"><strong>Tags</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link"><strong>Archives</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link"><strong>Projects</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link"><strong>About</strong></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>使用nvm管理不同版本的node与npm</h2>
+  <span class="post-date"><strong>2016-06-10 </strong> </span> &nbsp; &nbsp;
+  <span> <strong>
+  <a href="/tags#Node" >
+    <span class="tag-code">Node</span>
+  </a>
+</strong></span> &nbsp; &nbsp;
+  <span  class="post-date">
+     <span id="busuanzi_container_page_pv"><strong>
+    Hits: <span id="busuanzi_value_page_pv"></span></strong></span>
+  </span>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!--
+        <div class="tags">
+          <span style="color:darkorange">Tags:</span>
+          
+  <a href="/tags#Node" >
+    <span class="tag-code">Node</span>
+  </a>
+
+        </div>
+    -->
+  <article class="post-article">
+    <section class="markdown-content"><p>在我们的日常开发中经常会遇到这种情况：手上有好几个项目，每个项目的需求不同，进而不同项目必须依赖不同版的 NodeJS 运行环境。如果没有一个合适的工具，这个问题将非常棘手。</p>
+<h2 id="nvm-与-n-的区别"><a href="#nvm-与-n-的区别" class="headerlink" title="nvm 与 n 的区别"></a>nvm 与 n 的区别</h2><p>node 版本管理工具还有一个是 n 命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 bash 脚本，因此 n 命令相比 nvm 更加局限。</p>
+<p>由于 npm 安装的模块路径均为 /usr/local/lib/node_modules，当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。 因此不能很好的满足『按不同 node 版本使用不同全局 node 模块』的需求。</p>
+<h2 id="卸载全局安装的-node-npm"><a href="#卸载全局安装的-node-npm" class="headerlink" title="卸载全局安装的 node/npm"></a>卸载全局安装的 node/npm</h2><p>在官网下载的 node 安装包，运行后会自动安装在全局目录，使用过程中经常会遇到一些权限问题，所以推荐卸载全局安装的 node/npm。</p>
+<h2 id="Linux-安装"><a href="#Linux-安装" class="headerlink" title="Linux 安装"></a>Linux 安装</h2><p>我们并不一定要先卸载原有的 NodeJS。当然我们推荐还是先卸载掉比较好。另外，你还需要 C++ 编译器，Linux 发行版一般不用担心，像 Ubuntu 都可以直接用 build-essential 套件</p>
+<p>在 Linux 中：（如果是 Debian 发行版）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential</div></pre></td></tr></table></figure>
+<p>然后我们可以使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash</div></pre></td></tr></table></figure>
+<p>从远程下载 install.sh 脚本并执行。注意这个版本年数字 v0.33.0 会随着项目开发而变化。随时通过<a href="https://github.com/creationix/nvm#install-script" target="_blank" rel="external">官方最新安装命令</a>来检查最新安装版本是有好处的。</p>
+<h2 id="安装多版本-node-npm"><a href="#安装多版本-node-npm" class="headerlink" title="安装多版本 node/npm"></a>安装多版本 node/npm</h2><p>例如，我们要安装4.2.2版本，可以用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm install 4.2.2</div></pre></td></tr></table></figure>
+<p>nvm 遵守语义化版本命名规则。例如，你想安装最新的 4.2 系列的最新的一个版本的话，可以运行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm install 4.2</div></pre></td></tr></table></figure></p>
+<p>nvm 会寻找 4.2.x 中最高的版本来安装。</p>
+<p>你可以通过以下命令来列出远程服务器上所有的可用版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm ls-remote</div></pre></td></tr></table></figure></p>
+<h2 id="在不同版本间切换"><a href="#在不同版本间切换" class="headerlink" title="在不同版本间切换"></a>在不同版本间切换</h2><p>每当我们安装了一个新版本 Node 后，全局环境会自动把这个新版本设置为默认。</p>
+<p>nvm 提供了 nvm use 命令。这个命令的使用方法和 install 命令类似。</p>
+<p>例如，切换到 4.2.2：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm use 4.2.2</div></pre></td></tr></table></figure></p>
+<p>切换到最新的 `4.2.x``：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm use 4.2</div></pre></td></tr></table></figure>
+<p>切换到最新版：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm use node</div></pre></td></tr></table></figure></p>
+<p>每次执行切换的时候，系统都会把 node 的可执行文件链接放到特定版本的文件上。</p>
+<p>我们还可以用 nvm 给不同的版本号设置别名：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm <span class="built_in">alias</span> awesome-version 4.2.2</div></pre></td></tr></table></figure></p>
+<p>我们给 4.2.2 这个版本号起了一个名字叫做 awesome-version，然后我们可以运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm use awesome-version</div></pre></td></tr></table></figure>
+<p>下面这个命令可以取消别名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm <span class="built_in">unalias</span> awesome-version</div></pre></td></tr></table></figure>
+<p>另外，你还可以设置 default 这个特殊别名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm <span class="built_in">alias</span> default node</div></pre></td></tr></table></figure>
+<h2 id="列出已安装实例"><a href="#列出已安装实例" class="headerlink" title="列出已安装实例"></a>列出已安装实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm ls</div></pre></td></tr></table></figure>
+<p>上面绿色箭头是当前正在使用的版本，下面列出的还有设置过的别名。</p>
+<h2 id="在项目中使用不同版本的-Node"><a href="#在项目中使用不同版本的-Node" class="headerlink" title="在项目中使用不同版本的 Node"></a>在项目中使用不同版本的 Node</h2><p>我们可以通过创建项目目录中的 .nvmrc 文件来指定要使用的 Node 版本。之后在项目目录中执行 nvm use 即可。.nvmrc 文件内容只需要遵守上文提到的语义化版本规则即可。另外还有个工具叫做 avn，可以自动化这个过程。</p>
+<h2 id="在多环境中，使用npm"><a href="#在多环境中，使用npm" class="headerlink" title="在多环境中，使用npm"></a>在多环境中，使用npm</h2><p>每个版本的 Node 都会自带一个不同版本的 npm，可以用 npm -v 来查看 npm 的版本。全局安装的 npm 包并不会在不同的 Node 环境中共享，因为这会引起兼容问题。它们被放在了不同版本的目录下，例如 ~/.nvm/versions/node/<version>/lib/node_modules</version> 这样的目录。这刚好也省去我们在 Linux 中使用 sudo 的功夫了。因为这是用户的主文件夹，并不会引起权限问题。</p>
+<p>但问题来了，我们安装过的 npm 包，都要重新再装一次？幸运的是，我们有个办法来解决我们的问题，运行下面这个命令，可以从特定版本导入到我们将要安装的新版本 Node：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm install v5.0.0 --reinstall-packages-from=4.2</div></pre></td></tr></table></figure>
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><p>直接运行特定版本的 Node</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm run 4.2.2 --version</div></pre></td></tr></table></figure>
+<p>在当前终端的子进程中运行特定版本的 Node</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm <span class="built_in">exec</span> 4.2.2 node --version</div></pre></td></tr></table></figure>
+<p>确认某个版本Node的路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm <span class="built_in">which</span> 4.2.2</div></pre></td></tr></table></figure></section>
+    <br>
+    <p style="background-color:azure">~~~( 完 )~~~ </p>
+    <br>
+    <div class="pager">
+          
+             <span class="previous" style="float:left" >
+                <a style="background-color:azure" href="/2016/11/12/Postgresql安装使用/" data-toggle="tooltip" data-placement="top"
+                   title="Postgresql安装使用">&larr; <strong>Previous</strong></a>
+             </span>
+                    
+          
+            <span class="next" style="float:right" >
+                 <a style="background-color:azure" href="/2016/01/12/Github-Pages结合Hexo搭建博客/" data-toggle="tooltip" data-placement="top"
+                    title="Github-Pages结合Hexo搭建博客"><strong>Next</strong> &rarr;</a>
+            </span>
+          
+    </div>
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得文章对你有帮助，欢迎点击上方~赏~按钮给我打赏</p>
+    </div>
+    <!--<div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>-->
+    <div style="background-color:aliceblue; border-radius: 3px; padding: 0 0 3px 8px;">
+      <h3>文档信息</h3>
+        <li style="list-style:none">版权声明：自由转载-非商用-非衍生-保持署名
+          <a style="color:indigo" rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">（创意共享4.0许可证）</a> 转载请保留原文链接及作者。
+        </li>
+        <li style="list-style:none">作者：
+          <a style="color:indigo" href="http://www.kriry.com/about" target="_blank" I><strong>kriry</strong></a> 
+        </li>
+        <li style="list-style:none ">社交:
+           
+            <a style="color:indigo" class="icon-weibo" href="http://weibo.com/kriry" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-1x"></i>
+                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          
+          
+            <a style="color:indigo" class="icon-twitter" href="https://twitter.com/krircc" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-1x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          
+          
+            <a style="color:indigo" class="icon-github" href="https://github.com/krircc" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-1x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          
+        </li>
+    </div>
+    <br>
+    
+          <div id="comments"></div>
+          
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'http://www.kriry.com/2016/06/10/用nvm管理不同版本的node/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header');
+      
+      // error image
+    $(".markdown-content img").on('error', function() {
+        $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+        $(this).css({
+          'cursor': 'default'
+        })
+    })
+
+     // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src != 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+    
+    var gitmentConfig = "krircc";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "使用nvm管理不同版本的node与npm",
+        owner: "krircc",
+        repo: "krircc.github.io",
+        oauth: {
+          client_id: "fa541fea53a0e03f7cae",
+          client_secret: "d0875e9546bcf231f7f7de67f3ed2b7b6f070964"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+    <p class="copyright">
+      <strong>Copyright&copy; kriry</strong>&nbsp;|&nbsp;2015-2017
+      &nbsp;|&nbsp;
+    <span class="powered-by">
+      <i class="fa fa-user-md"></i>
+      <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

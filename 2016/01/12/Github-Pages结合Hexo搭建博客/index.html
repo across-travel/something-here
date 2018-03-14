@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="null">
+  <meta name="keyword" content="undefined">
+  
+       <link rel="shortcut icon" href="/css/images/logo.jpg">
+  
+  <title>
+    
+      Github-Pages结合Hexo搭建博客 | kriry
+    
+  </title>
+  <div class="wechat-share">
+      <img src="/css/images/logo.png" width='700'/>
+  </div>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span><strong>kriry</strong></span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link"><strong>Home</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link"><strong>Tags</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link"><strong>Archives</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link"><strong>Projects</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link"><strong>About</strong></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Github-Pages结合Hexo搭建博客</h2>
+  <span class="post-date"><strong>2016-01-12 </strong> </span> &nbsp; &nbsp;
+  <span> <strong>
+  <a href="/tags#Github" >
+    <span class="tag-code">Github</span>
+  </a>
+
+  <a href="/tags#hexo" >
+    <span class="tag-code">hexo</span>
+  </a>
+</strong></span> &nbsp; &nbsp;
+  <span  class="post-date">
+     <span id="busuanzi_container_page_pv"><strong>
+    Hits: <span id="busuanzi_value_page_pv"></span></strong></span>
+  </span>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!--
+        <div class="tags">
+          <span style="color:darkorange">Tags:</span>
+          
+  <a href="/tags#Github" >
+    <span class="tag-code">Github</span>
+  </a>
+
+  <a href="/tags#hexo" >
+    <span class="tag-code">hexo</span>
+  </a>
+
+        </div>
+    -->
+  <article class="post-article">
+    <section class="markdown-content"><h3 id="Github-Pages结合Hexo搭建博客"><a href="#Github-Pages结合Hexo搭建博客" class="headerlink" title="Github-Pages结合Hexo搭建博客"></a>Github-Pages结合Hexo搭建博客</h3><h3 id="一-环境准备"><a href="#一-环境准备" class="headerlink" title="一 : 环境准备"></a>一 : 环境准备</h3><ul>
+<li>安装Git</li>
+<li>安装Node.js</li>
+</ul>
+<h3 id="二-Hexo安装"><a href="#二-Hexo安装" class="headerlink" title="二 : Hexo安装"></a>二 : Hexo安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div><div class="line">常用命令：</div><div class="line">hexo help #查看帮助</div><div class="line">hexo init #初始化一个目录</div><div class="line">hexo new &quot;postName&quot; #新建文章</div><div class="line">hexo new page &quot;pageName&quot; #新建页面</div><div class="line">hexo generate #生成网页，可以在 public 目录查看整个网站的文件</div><div class="line">hexo server #本地预览，&apos;Ctrl+C&apos;关闭</div><div class="line">hexo deploy #部署.deploy目录</div><div class="line">hexo clean #清除缓存，**强烈建议执行命令前先清理缓存，部署前先删除 .deploy 文件夹**</div><div class="line">简写：</div><div class="line">hexo n == hexo new</div><div class="line">hexo g == hexo generate</div><div class="line">hexo s == hexo server</div><div class="line">hexo d == hexo deploy</div></pre></td></tr></table></figure>
+<h3 id="三-：Setup"><a href="#三-：Setup" class="headerlink" title="三 ：Setup"></a>三 ：Setup</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ hexo init folder</div><div class="line">$ cd folder</div><div class="line">$ npm install</div><div class="line"></div><div class="line">hexo目录结构</div><div class="line">├── .deploy #需要部署的文件</div><div class="line">├── node_modules #Hexo插件</div><div class="line">├── public #生成的静态网页文件</div><div class="line">├── scaffolds #模板</div><div class="line">├── source #博客正文和其他源文件，404、favicon、CNAME 都应该放在这里</div><div class="line"> ├── _drafts #草稿</div><div class="line"> └── _posts #文章</div><div class="line">├── themes #主题</div><div class="line">├── _config.yml #全局配置文件</div><div class="line">└── package.json</div></pre></td></tr></table></figure>
+<h3 id="四-：设置-config-yml"><a href="#四-：设置-config-yml" class="headerlink" title="四 ：设置_config.yml"></a>四 ：设置_config.yml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"># Hexo Configuration</div><div class="line">## Docs: http://hexo.io/docs/configuration.html</div><div class="line">## Source: https://github.com/hexojs/hexo/</div><div class="line"># Site #站点信息</div><div class="line">title:  #标题</div><div class="line">subtitle:  #副标题</div><div class="line">description:  #站点描述，给搜索引擎看的</div><div class="line">author:  #作者</div><div class="line">email:  #电子邮箱</div><div class="line">language: zh-CN #语言</div><div class="line"># URL #链接格式</div><div class="line">url:  #网址</div><div class="line">root: / #根目录</div><div class="line">permalink: :year/:month/:day/:title/ #文章的链接格式</div><div class="line">tag_dir: tags #标签目录</div><div class="line">archive_dir: archives #存档目录</div><div class="line">category_dir: categories #分类目录</div><div class="line">code_dir: downloads/code</div><div class="line">permalink_defaults:</div><div class="line"># Directory #目录</div><div class="line">source_dir: source #源文件目录</div><div class="line">public_dir: public #生成的网页文件目录</div><div class="line"># Writing #写作</div><div class="line">new_post_name: :title.md #新文章标题</div><div class="line">default_layout: post #默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）</div><div class="line">titlecase: false #标题转换成大写</div><div class="line">external_link: true #在新选项卡中打开连接</div><div class="line">filename_case: 0</div><div class="line">render_drafts: false</div><div class="line">post_asset_folder: false</div><div class="line">relative_link: false</div><div class="line">highlight: #语法高亮</div><div class="line">  enable: true #是否启用</div><div class="line">  line_number: true #显示行号</div><div class="line">  tab_replace:</div><div class="line"># Category &amp; Tag #分类和标签</div><div class="line">default_category: uncategorized #默认分类</div><div class="line">category_map:</div><div class="line">tag_map:</div><div class="line"># Archives</div><div class="line">2: 开启分页</div><div class="line">1: 禁用分页</div><div class="line">0: 全部禁用</div><div class="line">archive: 2</div><div class="line">category: 2</div><div class="line">tag: 2</div><div class="line"># Server #本地服务器</div><div class="line">port: 4000 #端口号</div><div class="line">server_ip: localhost #IP 地址</div><div class="line">logger: false</div><div class="line">logger_format: dev</div><div class="line"># Date / Time format #日期时间格式</div><div class="line">date_format: YYYY-MM-DD #参考http://momentjs.com/docs/#/displaying/format/</div><div class="line">time_format: H:mm:ss</div><div class="line"># Pagination #分页</div><div class="line">per_page: 10 #每页文章数，设置成 0 禁用分页</div><div class="line">pagination_dir: page</div><div class="line"># Disqus #Disqus评论，替换为多说</div><div class="line">disqus_shortname:</div><div class="line"># Extensions #拓展插件</div><div class="line">theme: landscape-plus #主题</div><div class="line">exclude_generator:</div><div class="line">plugins: #插件，例如生成 RSS 和站点地图的</div><div class="line">- hexo-generator-feed</div><div class="line">- hexo-generator-sitemap</div><div class="line"># Deployment #部署，将 lmintlcx 改成用户名</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: 刚刚github创库地址.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<pre><code>配置文件的冒号“:”后面有一个空格
+
+repo: 刚刚github创库地址.git 如：https://github.com/kriry/kriry.github.io.git
+</code></pre><h3 id="五-：发布到Github"><a href="#五-：发布到Github" class="headerlink" title="五 ：发布到Github"></a>五 ：发布到Github</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">1: 生成SSH密钥</div><div class="line">ssh-keygen -t rsa -C “你的邮箱地址”，按3个回车，则密码为空。</div><div class="line">在～.ssh下，得到两个文件id_rsa和id_rsa.pub。</div><div class="line">2： 在GitHub上添加SSH密钥</div><div class="line">打开id_rsa.pub，复制全文。 https://github.com/settings/ssh ，Add SSH key，粘贴进去。</div><div class="line">3： 部署：</div><div class="line">$ hexo server  //可以先本地预览看看,浏览器访问：http://localhost:4000</div><div class="line">$ hexo generate  //重新生成静态博客的所有内容</div><div class="line">$ npm install hexo-deployer-git --save  //安装git部署插件</div><div class="line">$ hexo deploy  //发布到Github,访问：http://kriry.github.io</div><div class="line">每次发表新文章部署按这样的流程：</div><div class="line">$ hexo clean</div><div class="line">$ hexo generate</div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+</section>
+    <br>
+    <p style="background-color:azure">~~~( 完 )~~~ </p>
+    <br>
+    <div class="pager">
+          
+             <span class="previous" style="float:left" >
+                <a style="background-color:azure" href="/2016/06/10/用nvm管理不同版本的node/" data-toggle="tooltip" data-placement="top"
+                   title="使用nvm管理不同版本的node与npm">&larr; <strong>Previous</strong></a>
+             </span>
+                    
+          
+            <span class="next" style="float:right" >
+                 <a style="background-color:azure" href="/2015/08/15/Rust数据类型详解/" data-toggle="tooltip" data-placement="top"
+                    title="Rust数据类型详解"><strong>Next</strong> &rarr;</a>
+            </span>
+          
+    </div>
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得文章对你有帮助，欢迎点击上方~赏~按钮给我打赏</p>
+    </div>
+    <!--<div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>-->
+    <div style="background-color:aliceblue; border-radius: 3px; padding: 0 0 3px 8px;">
+      <h3>文档信息</h3>
+        <li style="list-style:none">版权声明：自由转载-非商用-非衍生-保持署名
+          <a style="color:indigo" rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">（创意共享4.0许可证）</a> 转载请保留原文链接及作者。
+        </li>
+        <li style="list-style:none">作者：
+          <a style="color:indigo" href="http://www.kriry.com/about" target="_blank" I><strong>kriry</strong></a> 
+        </li>
+        <li style="list-style:none ">社交:
+           
+            <a style="color:indigo" class="icon-weibo" href="http://weibo.com/kriry" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-1x"></i>
+                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          
+          
+            <a style="color:indigo" class="icon-twitter" href="https://twitter.com/krircc" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-1x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          
+          
+            <a style="color:indigo" class="icon-github" href="https://github.com/krircc" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-1x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          
+        </li>
+    </div>
+    <br>
+    
+          <div id="comments"></div>
+          
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'http://www.kriry.com/2016/01/12/Github-Pages结合Hexo搭建博客/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header');
+      
+      // error image
+    $(".markdown-content img").on('error', function() {
+        $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+        $(this).css({
+          'cursor': 'default'
+        })
+    })
+
+     // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src != 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+    
+    var gitmentConfig = "krircc";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "Github-Pages结合Hexo搭建博客",
+        owner: "krircc",
+        repo: "krircc.github.io",
+        oauth: {
+          client_id: "fa541fea53a0e03f7cae",
+          client_secret: "d0875e9546bcf231f7f7de67f3ed2b7b6f070964"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+    <p class="copyright">
+      <strong>Copyright&copy; kriry</strong>&nbsp;|&nbsp;2015-2017
+      &nbsp;|&nbsp;
+    <span class="powered-by">
+      <i class="fa fa-user-md"></i>
+      <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

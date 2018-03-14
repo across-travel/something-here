@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="null">
+  <meta name="keyword" content="undefined">
+  
+       <link rel="shortcut icon" href="/css/images/logo.jpg">
+  
+  <title>
+    
+      Polymer 2.x Cheat Sheet | kriry
+    
+  </title>
+  <div class="wechat-share">
+      <img src="/css/images/logo.png" width='700'/>
+  </div>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span><strong>kriry</strong></span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link"><strong>Home</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link"><strong>Tags</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link"><strong>Archives</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link"><strong>Projects</strong></a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link"><strong>About</strong></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Polymer 2.x Cheat Sheet</h2>
+  <span class="post-date"><strong>2017-07-11 </strong> </span> &nbsp; &nbsp;
+  <span> <strong>
+  <a href="/tags#Polymer" >
+    <span class="tag-code">Polymer</span>
+  </a>
+
+  <a href="/tags#Web" >
+    <span class="tag-code">Web</span>
+  </a>
+</strong></span> &nbsp; &nbsp;
+  <span  class="post-date">
+     <span id="busuanzi_container_page_pv"><strong>
+    Hits: <span id="busuanzi_value_page_pv"></span></strong></span>
+  </span>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!--
+        <div class="tags">
+          <span style="color:darkorange">Tags:</span>
+          
+  <a href="/tags#Polymer" >
+    <span class="tag-code">Polymer</span>
+  </a>
+
+  <a href="/tags#Web" >
+    <span class="tag-code">Web</span>
+  </a>
+
+        </div>
+    -->
+  <article class="post-article">
+    <section class="markdown-content"><p>This is a cheat sheet for the <a href="https://www.polymer-project.org/" target="_blank" rel="external">Polymer 2.x</a> library.</p>
+<ul>
+<li>Defining an element</li>
+<li>Extending an element</li>
+<li>Defining a mixin</li>
+<li>Lifecycle methods</li>
+<li>Data binding</li>
+<li>Observers</li>
+<li>Listeners</li>
+<li>Properties block</li>
+<li>Observing added and removed children</li>
+<li>Style modules</li>
+<li>Styling with custom properties and - - mixins</li>
+<li>Binding helper elements</li>
+</ul>
+<h2 id="Defining-an-element"><a href="#Defining-an-element" class="headerlink" title="Defining an element"></a>Defining an element</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/upgrade" target="_blank" rel="external">1.x -&gt; 2.x upgrade guide</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/registering-elements" target="_blank" rel="external">registering an element</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/style-shadow-dom#style-modules" target="_blank" rel="external">shared style modules</a>.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"bower_components/polymer/polymer-element.html"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dom-module</span> <span class="attr">id</span>=<span class="string">"element-name"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- Use one of these style declarations, but not both --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- Use this if you don’t want to include a shared style --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- Use this if you want to include a shared style --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">include</span>=<span class="string">"some-style-module-name"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">    class MyElement extends Polymer.Element &#123;</div><div class="line">      static get is() &#123; return 'element-name'; &#125;</div><div class="line">      // All of these are optional. Only keep the ones you need.</div><div class="line">      static get properties() &#123; ... &#125;</div><div class="line">      static get observers() &#123; ... &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Associate the new class with an element name</div><div class="line">    customElements.define(MyElement.is, MyElement);</div><div class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dom-module</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>To get the class definition for a particular custom tag, you can use<br><code>customElements.get(&#39;element-name&#39;)</code>.</p>
+<h2 id="Extending-an-element"><a href="#Extending-an-element" class="headerlink" title="Extending an element"></a>Extending an element</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/custom-elements#extending-other-elements" target="_blank" rel="external">extending elements</a>, <a href="https://www.polymer-project.org/2.0/docs/devguide/dom-template#inherited-templates" target="_blank" rel="external">inherited templates</a>.</p>
+<p>Instead of <code>Polymer.Element</code>, a custom element can extend a different element):<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParentElement</span> <span class="keyword">extends</span> <span class="title">Polymer</span>.<span class="title">Element</span> </span>&#123;</div><div class="line">  <span class="comment">/* ... */</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChildElement</span> <span class="keyword">extends</span> <span class="title">ParentElement</span> </span>&#123;</div><div class="line">  <span class="comment">/* ... */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>To change or add to the parent’s template, override the <code>template</code> getter:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dom-module</span> <span class="attr">id</span>=<span class="string">"child-element"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"> /* ... */ </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>bonus!<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> childTemplate;</div><div class="line">    <span class="keyword">var</span> childTemplate = Polymer.DomModule.import(<span class="string">'child-element'</span>, <span class="string">'template'</span>);</div><div class="line">    <span class="keyword">var</span> parentTemplate = ParentElement.template.cloneNode(<span class="literal">true</span>);</div><div class="line">    <span class="comment">// Or however you want to assemble these.</span></div><div class="line">    childTemplate.content.insertBefore(parentTemplate.firstChild, parentTemplate);</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ChildElement</span> <span class="keyword">extends</span> <span class="title">ParentElement</span> </span>&#123;</div><div class="line">      <span class="keyword">static</span> get is() &#123; <span class="keyword">return</span> <span class="string">'child-element'</span>; &#125;</div><div class="line">      <span class="comment">// Note: the more work you do here, the slower your element is to</span></div><div class="line">      <span class="comment">// boot up. You should probably do the template assembling once, in a</span></div><div class="line">      <span class="comment">// static method outside your class (like above).</span></div><div class="line">      <span class="keyword">static</span> get template() &#123;</div><div class="line">        <span class="keyword">return</span> childTemplate;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    customElements.define(ChildElement.is, ChildElement);</div><div class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dom-module</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>If you don’t know the parent class, you can also use:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChildElement</span> <span class="keyword">extends</span> <span class="title">customElement</span>.<span class="title">get</span>('<span class="title">parent</span>-<span class="title">element</span>') </span>&#123;</div><div class="line">  <span class="comment">/* ... */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Defining-a-mixin"><a href="#Defining-a-mixin" class="headerlink" title="Defining a mixin"></a>Defining a mixin</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/custom-elements#mixins" target="_blank" rel="external">mixins</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/hybrid-elements" target="_blank" rel="external">hybrid elements</a>.</p>
+<p>Defining a class expression mixin to share implementation between different elements:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  MyMixin = <span class="function"><span class="keyword">function</span>(<span class="params">superClass</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">superClass</span> </span>&#123;</div><div class="line">      <span class="comment">// Code that you want common to elements.</span></div><div class="line">      <span class="comment">// If you're going to override a lifecycle method, remember that a) you</span></div><div class="line">      <span class="comment">// might need to call super but b) it might not exist</span></div><div class="line">      connectedCallback() &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">super</span>.connectedCallback) &#123;</div><div class="line">          <span class="keyword">super</span>.connectedCallback();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">/* ... */</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Using the mixin in an element definition:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dom-module</span> <span class="attr">id</span>=<span class="string">"element-name"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span><span class="comment">&lt;!-- ... --&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="comment">// This could also be a sequence:</span></div><div class="line">    <span class="comment">//class MyElement extends AnotherMixin(MyMixin(Polymer.Element)) &#123; … &#125;</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyElement</span> <span class="keyword">extends</span> <span class="title">MyMixin</span>(<span class="title">Polymer</span>.<span class="title">Element</span>) </span>&#123;</div><div class="line">      <span class="keyword">static</span> get is() &#123; <span class="keyword">return</span> <span class="string">'element-name'</span> &#125;</div><div class="line">      <span class="comment">/* ... */</span></div><div class="line">    &#125;</div><div class="line">    customElements.define(MyElement.is, MyElement);</div><div class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dom-module</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Using hybrid behaviors (defined in the 1.x syntax) as mixins:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dom-module</span> <span class="attr">id</span>=<span class="string">"element-name"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span><span class="comment">&lt;!-- ... --&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">    class MyElement extends Polymer.mixinBehaviors([MyBehavior, MyBehavior2], Polymer.Element) &#123;</div><div class="line">     static get is() &#123; return 'element-name' &#125;</div><div class="line">     /* ... */</div><div class="line">    &#125;</div><div class="line">    customElements.define('element-name', MyElement);</div><div class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dom-module</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Lifecycle-methods"><a href="#Lifecycle-methods" class="headerlink" title="Lifecycle methods"></a>Lifecycle methods</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/custom-elements#element-lifecycle" target="_blank" rel="external">lifecycle callbacks</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/custom-elements#one-time-initialization" target="_blank" rel="external">ready</a>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyElement</span> <span class="keyword">extends</span> <span class="title">Polymer</span>.<span class="title">Element</span> </span>&#123;</div><div class="line"> <span class="keyword">constructor</span>() &#123; <span class="keyword">super</span>(); <span class="comment">/* ... */</span>&#125;</div><div class="line"> ready() &#123; <span class="keyword">super</span>.ready(); <span class="comment">/* ... */</span>&#125;</div><div class="line"> connectedCallback() &#123; <span class="keyword">super</span>.connectedCallback(); <span class="comment">/* ... */</span>&#125;</div><div class="line"> disconnectedCallback() &#123; <span class="keyword">super</span>.disconnectedCallback(); <span class="comment">/* ... */</span>&#125;</div><div class="line"> attributeChangedCallback() &#123; <span class="keyword">super</span>.attributeChangedCallback(); <span class="comment">/* ... */</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Data-binding"><a href="#Data-binding" class="headerlink" title="Data binding"></a>Data binding</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/data-binding" target="_blank" rel="external">data binding</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/data-binding#attribute-binding" target="_blank" rel="external">attribute binding</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/data-binding#bind-array-item" target="_blank" rel="external">binding to array items</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/data-binding#annotated-computed" target="_blank" rel="external">computed bindings</a>.</p>
+<p>Don’t forget: Polymer <a href="https://www.polymer-project.org/2.0/docs/devguide/properties#property-name-mapping" target="_blank" rel="external">camel-cases</a> properties, so if in JavaScript you use <code>myProperty</code>,<br>in HTML you would use <code>my-property</code>.</p>
+<p><strong>One way</strong> binding: when <code>myProperty</code> changes, <code>theirProperty</code> gets updated:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">some-element</span> <span class="attr">their-property</span>=<span class="string">"[[myProperty]]"</span>&gt;</span><span class="tag">&lt;/<span class="name">some-element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>Two way</strong> binding: when <code>myProperty</code> changes, <code>theirProperty</code> gets updated,<br>and vice versa:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">some-element</span> <span class="attr">their-property</span>=<span class="string">"&#123;&#123;myProperty&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">some-element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>Attribute binding</strong>: when <code>myProperty</code> is <code>true</code>, the element is hidden; when it’s<br><code>false</code>, the element is visible. The difference between attribute and property<br>binding is that property binding is equivalent to <code>someElement.someProp = value</code>,<br>whereas attribute binding is equivalent to: <code>someElement.setAttribute(someProp, value)</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">some-element</span> <span class="attr">hidden</span>$=<span class="string">"[[myProperty]]"</span>&gt;</span><span class="tag">&lt;/<span class="name">some-element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>Computed binding</strong>: binding to the <code>class</code> attribute will recompile styles when<br><code>myProperty</code> changes:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">some-element</span> <span class="attr">class</span>$=<span class="string">"[[_computeSomething(myProperty)]]"</span>&gt;</span><span class="tag">&lt;/<span class="name">some-element</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">_computeSomething: <span class="function"><span class="keyword">function</span>(<span class="params">prop</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> prop ? <span class="string">'a-class-name'</span> : <span class="string">'another-class-name'</span>;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Observers"><a href="#Observers" class="headerlink" title="Observers"></a>Observers</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/observers" target="_blank" rel="external">observers</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/observers#multi-property-observers" target="_blank" rel="external">multi-property observers</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/observers#array-observation" target="_blank" rel="external">observing array mutations</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/observers#dynamic-observers" target="_blank" rel="external">adding observers dynamically</a>.</p>
+<p>Adding an <code>observer</code> in the <code>properties</code> block lets you observe changes in the<br>value of a property:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> get properties() &#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">myProperty</span>: &#123;</div><div class="line">      <span class="attr">observer</span>: <span class="string">'_myPropertyChanged'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// The second argument is optional, and gives you the</span></div><div class="line"><span class="comment">// previous value of the property, before the update:</span></div><div class="line">_myPropertyChanged(value, <span class="comment">/*oldValue */</span>) &#123; <span class="comment">/* ... */</span> &#125;</div></pre></td></tr></table></figure>
+<p>In the <code>observers</code> block:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> get observers() &#123;</div><div class="line">  <span class="keyword">return</span> [</div><div class="line">    <span class="string">'_doSomething(myProperty)'</span>,</div><div class="line">    <span class="string">'_multiPropertyObserver(myProperty, anotherProperty)'</span>,</div><div class="line">    <span class="string">'_observerForASubProperty(user.name)'</span>,</div><div class="line">    <span class="comment">// Below, items can be an array or an object:'</span></div><div class="line">    <span class="string">'_observerForABunchOfSubPaths(items.*)'</span></div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Adding an observer dynamically for a property <code>otherProperty</code>:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Define a method</span></div><div class="line">_otherPropertyChanged(value) &#123; <span class="comment">/* ... */</span> &#125;</div><div class="line"><span class="comment">// Call it when `otherPropety` changes</span></div><div class="line"><span class="keyword">this</span>._createPropertyObserver(<span class="string">'otherProperty'</span>, <span class="string">'_otherPropertyChanged'</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="Listeners"><a href="#Listeners" class="headerlink" title="Listeners"></a>Listeners</h2><p>In Polymer 2.0, we recommend that rather than using the <code>listeners</code> block,<br>you #useThePlatform and define event listeners yourself:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ready() &#123;</div><div class="line">  <span class="keyword">super</span>.ready();</div><div class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">'some-event'</span>, () =&gt; <span class="keyword">this</span>.someFunction());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>There is a <a href="https://github.com/Polymer/polymer/pull/4632" target="_blank" rel="external">PR</a> out to add a<br>declarative listener block as a mixin. Stay tuned!</p>
+<h2 id="Properties-block"><a href="#Properties-block" class="headerlink" title="Properties block"></a>Properties block</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/properties" target="_blank" rel="external">declared properties</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/properties#configuring-object-and-array-properties" target="_blank" rel="external">object/array properties</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/properties#read-only" target="_blank" rel="external">read-only properties</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/observers#computed-properties" target="_blank" rel="external">computed properties</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/observers#add-a-computed-property-dynamically" target="_blank" rel="external">adding computed properties dynamically</a>.</p>
+<p>There are all the possible things you can use in the <code>properties</code><br>block. Don’t just use all of them because you can; some (like <code>reflectToAttribute</code><br>  and <code>notify</code>) can have performance implications.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> get properties() &#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">basic</span>: &#123;</div><div class="line">      <span class="attr">type</span>: <span class="built_in">Boolean</span> | <span class="built_in">Number</span> | <span class="built_in">String</span> | <span class="built_in">Array</span> | <span class="built_in">Object</span>,</div><div class="line"></div><div class="line">      <span class="comment">// Default value of the property can be one of the types above, eg:</span></div><div class="line">      value: <span class="literal">true</span>,</div><div class="line"></div><div class="line">      <span class="comment">// For an Array or Object, you must return it from a function</span></div><div class="line">      <span class="comment">// (otherwise the array will be defined on the prototype</span></div><div class="line">      <span class="comment">// and not the instance):</span></div><div class="line">      value: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> [<span class="string">'cheese'</span>, <span class="string">'pepperoni'</span>, <span class="string">'more-cheese'</span>] &#125;,</div><div class="line"></div><div class="line">      <span class="attr">reflectToAttribute</span>: <span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">      <span class="attr">readOnly</span>: <span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">      <span class="attr">notify</span>: <span class="literal">true</span> | <span class="literal">false</span></div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="comment">// Computed properties are essentially read-only, and can only be</span></div><div class="line">    <span class="comment">// updated when their dependencies change.</span></div><div class="line">    basicComputedProperty: &#123;</div><div class="line">      <span class="attr">computed</span>: <span class="string">'_someFunction(myProperty, anotherProperty)'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Adding a computed property dynamically:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>._createComputedProperty(<span class="string">'newProperty'</span>, <span class="string">'_computeNewProperty(prop1,prop2)'</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="Observing-added-and-removed-children"><a href="#Observing-added-and-removed-children" class="headerlink" title="Observing added and removed children"></a>Observing added and removed children</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/shadow-dom#shadow-dom-and-composition" target="_blank" rel="external">Shadow DOM distribution</a>,<br><a href="https://www.polymer-project.org/2.0/docs/upgrade#polymer-dom-apis" target="_blank" rel="external">observe nodes</a>.</p>
+<p>If you have a content node for distribution:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>And you want to be notified when nodes have been added/removed:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- You need to import the observer --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"/bower_components/polymer/lib/utils/flattened-nodes-observer.html"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyElement</span> <span class="keyword">extends</span> <span class="title">Polymer</span>.<span class="title">Element</span> </span>&#123;</div><div class="line">  <span class="comment">/* ... */</span></div><div class="line">  connectedCallback: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">super</span>.connectedCallback();</div><div class="line">    <span class="keyword">this</span>._observer = <span class="keyword">new</span> Polymer.FlattenedNodesObserver(<span class="function"><span class="keyword">function</span>(<span class="params">info</span>) </span>&#123;</div><div class="line">    <span class="comment">// info is &#123;addedNodes: [...], removedNodes: [...]&#125;</span></div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  disconnectedCallback: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">super</span>.disconnectedCallback();</div><div class="line">    <span class="keyword">this</span>._observer.disconnect();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Style-modules"><a href="#Style-modules" class="headerlink" title="Style modules"></a>Style modules</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/style-shadow-dom#style-modules" target="_blank" rel="external">shared style modules</a>.</p>
+<p>Defining styles that will be shared across different elements, in a file called<br><code>my-shared-styles.html</code> (for example):</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dom-module</span> <span class="attr">id</span>=<span class="string">"my-shared-styles"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">      .red &#123; color: red; &#125;</div><div class="line">      /* Custom property defined in the global scope */</div><div class="line">      html &#123;</div><div class="line">        --the-best-red: #e91e63;</div><div class="line">      &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dom-module</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Include the shared style in a custom element:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"my-shared-styles.html"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dom-module</span> <span class="attr">id</span>=<span class="string">"element-name"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">include</span>=<span class="string">"my-shared-styles"</span>&gt;</span><span class="undefined"></span></div><div class="line">      /* Other styles in here */</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyElement</span> <span class="keyword">extends</span> <span class="title">Polymer</span>.<span class="title">Element</span> </span>&#123;</div><div class="line">      <span class="comment">/* ... */</span></div><div class="line">    &#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dom-module</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Include the shared style in the main document:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- Import the custom-style element --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"components/polymer/lib/elements/custom-style.html"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"my-shared-styles.html"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">custom-style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">include</span>=<span class="string">"my-shared-styles"</span>&gt;</span><span class="undefined"></span></div><div class="line">      /* Other styles in here */</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">custom-style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>...<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Styling-with-custom-properties-and-mixins"><a href="#Styling-with-custom-properties-and-mixins" class="headerlink" title="Styling with custom properties and mixins"></a>Styling with custom properties and mixins</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/style-shadow-dom" target="_blank" rel="external">styling</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/custom-css-properties" target="_blank" rel="external">CSS properties</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/custom-css-properties#use-custom-css-mixins" target="_blank" rel="external">CSS mixins</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/custom-css-properties#custom-properties-shim-limitations" target="_blank" rel="external">shim limitations</a></p>
+<p>Note that the examples below depend on browser support for custom properties and mixins.</p>
+<p>Defining a custom property:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> <span class="comment">/* or :host etc. */</span>&#123;</div><div class="line">  <span class="attribute">--my-custom-radius</span>: <span class="number">5px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Using a custom property:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.my-image</span> &#123;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="built_in">var</span>(--my-custom-radius);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Using a custom property with a fallback:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.my-image</span> &#123;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="built_in">var</span>(--my-custom-radius, 3px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Using a custom property with a custom property fallback:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.my-image</span> &#123;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="built_in">var</span>(--my-custom-radius, var(--my-fallback));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>If you want to use mixins, you need to include the CSS mixins shim.<br>For how to use the shim and its limitations, check the docs linked at the<br>beginning of the section.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"/bower_components/shadycss/apply-shim.html"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Defining a mixin:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">some-custom-element</span> &#123;</div><div class="line">  <span class="attribute">--my-custom-mixin</span>: &#123;</div><div class="line">    border-radius: <span class="number">5px</span>;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Using a mixin:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.my-image &#123;</div><div class="line">  @apply --my-custom-mixin;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Binding-helper-elements"><a href="#Binding-helper-elements" class="headerlink" title="Binding helper elements"></a>Binding helper elements</h2><p>Docs: <a href="https://www.polymer-project.org/2.0/docs/devguide/templates#dom-repeat" target="_blank" rel="external">dom-repeat</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/templates#dom-bind" target="_blank" rel="external">dom-bind</a>,<br><a href="https://www.polymer-project.org/2.0/docs/devguide/templates#dom-if" target="_blank" rel="external">dom-if</a></p>
+<p>There are two ways to use the helper elements:</p>
+<ul>
+<li>inside a Polymer element/Polymer managed template: just use the <code>&lt;template is=...&gt;</code><br>syntax, without the wrapper, for example:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">is</span>=<span class="string">"dom-repeat"</span>&gt;</span></div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>outside of a Polymer managed template: use the <code>&lt;dom-...&gt;</code> wrapper element<br>around a <code>&lt;template&gt;</code>, for example:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dom-repeat</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    ...</div><div class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dom-repeat</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>dom-repeat</code> stamps and binds a template for each item in an array:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"components/polymer/lib/elements/dom-repeat.html"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dom-repeat</span> <span class="attr">items</span>=<span class="string">"[[employees]]"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>First name: <span class="tag">&lt;<span class="name">span</span>&gt;</span>[[item.first]]<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>Last name: <span class="tag">&lt;<span class="name">span</span>&gt;</span>[[item.last]]<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dom-repeat</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>dom-bind</code> stamps itself into the main document and adds a binding scope:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"components/polymer/lib/elements/dom-bind.html"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">dom-bind</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">paper-input</span> <span class="attr">value</span>=<span class="string">"&#123;&#123;myText&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">paper-input</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>You typed: [[myText]]<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">dom-bind</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>dom-if</code> stamps itself conditionally based on a property’s value:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"components/polymer/lib/elements/dom-if.html"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dom-if</span> <span class="attr">if</span>=<span class="string">"[[myProperty]]"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>This content will appear when myProperty is truthy.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dom-if</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>原文出处：<a href="https://meowni.ca/posts/polymer-2-cheatsheet/" target="_blank" rel="external">Polymer 2.x Cheat Sheet</a>.</p>
+</blockquote>
+</section>
+    <br>
+    <p style="background-color:azure">~~~( 完 )~~~ </p>
+    <br>
+    <div class="pager">
+          
+          
+            <span class="next" style="float:right" >
+                 <a style="background-color:azure" href="/2016/11/12/Postgresql安装使用/" data-toggle="tooltip" data-placement="top"
+                    title="Postgresql安装使用"><strong>Next</strong> &rarr;</a>
+            </span>
+          
+    </div>
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得文章对你有帮助，欢迎点击上方~赏~按钮给我打赏</p>
+    </div>
+    <!--<div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>-->
+    <div style="background-color:aliceblue; border-radius: 3px; padding: 0 0 3px 8px;">
+      <h3>文档信息</h3>
+        <li style="list-style:none">版权声明：自由转载-非商用-非衍生-保持署名
+          <a style="color:indigo" rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">（创意共享4.0许可证）</a> 转载请保留原文链接及作者。
+        </li>
+        <li style="list-style:none">作者：
+          <a style="color:indigo" href="http://www.kriry.com/about" target="_blank" I><strong>kriry</strong></a> 
+        </li>
+        <li style="list-style:none ">社交:
+           
+            <a style="color:indigo" class="icon-weibo" href="http://weibo.com/kriry" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-1x"></i>
+                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          
+          
+            <a style="color:indigo" class="icon-twitter" href="https://twitter.com/krircc" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-1x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          
+          
+            <a style="color:indigo" class="icon-github" href="https://github.com/krircc" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-1x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          
+        </li>
+    </div>
+    <br>
+    
+          <div id="comments"></div>
+          
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'http://www.kriry.com/2017/07/11/Polymer 2.x Cheat Sheet/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header');
+      
+      // error image
+    $(".markdown-content img").on('error', function() {
+        $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+        $(this).css({
+          'cursor': 'default'
+        })
+    })
+
+     // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src != 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+    
+    var gitmentConfig = "krircc";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "Polymer 2.x Cheat Sheet",
+        owner: "krircc",
+        repo: "krircc.github.io",
+        oauth: {
+          client_id: "fa541fea53a0e03f7cae",
+          client_secret: "d0875e9546bcf231f7f7de67f3ed2b7b6f070964"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+    <p class="copyright">
+      <strong>Copyright&copy; kriry</strong>&nbsp;|&nbsp;2015-2017
+      &nbsp;|&nbsp;
+    <span class="powered-by">
+      <i class="fa fa-user-md"></i>
+      <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
